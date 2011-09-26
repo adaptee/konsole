@@ -505,12 +505,12 @@ TabbedViewContainer::TabbedViewContainer(NavigationPosition position , QObject* 
     if ( position == NavigationPositionTop )
     {
         _layout->insertLayout(0,_tabBarLayout);
-        _layout->insertWidget(-1,searchBar());
+        _layout->insertWidget(0,searchBar());
         _tabBar->setShape(QTabBar::RoundedNorth);
     }
     else if ( position == NavigationPositionBottom )
     {
-        _layout->insertWidget(-1,searchBar());
+        _layout->insertWidget(0,searchBar());
         _layout->insertLayout(-1,_tabBarLayout);
         _tabBar->setShape(QTabBar::RoundedSouth);
     }
@@ -576,7 +576,7 @@ void TabbedViewContainer::navigationPositionChanged(NavigationPosition position)
         _layout->removeWidget(searchBar());
 
         _layout->insertLayout(0,_tabBarLayout);
-        _layout->insertWidget(-1,searchBar());
+        _layout->insertWidget(0,searchBar());
         _tabBar->setShape(QTabBar::RoundedNorth);
     }
     else if ( position == NavigationPositionBottom 
@@ -585,7 +585,7 @@ void TabbedViewContainer::navigationPositionChanged(NavigationPosition position)
         _layout->removeItem(_tabBarLayout);
         _layout->removeWidget(searchBar());
 
-        _layout->insertWidget(-1,searchBar());
+        _layout->insertWidget(0,searchBar());
         _layout->insertLayout(-1,_tabBarLayout);
         _tabBar->setShape(QTabBar::RoundedSouth);
     }

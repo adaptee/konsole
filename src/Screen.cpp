@@ -627,14 +627,14 @@ void Screen::checkSelection(int from, int to)
         clearSelection();
 }
 
-void Screen::displayCharacter(unsigned short c)
+void Screen::displayCharacter(unsigned short c, bool cjkAmbiguousWide)
 {
     // Note that VT100 does wrapping BEFORE putting the character.
     // This has impact on the assumption of valid cursor positions.
     // We indicate the fact that a newline has to be triggered by
     // putting the cursor one right to the last column of the screen.
 
-    int w = konsole_wcwidth(c);
+    int w = konsole_wcwidth(c, cjkAmbiguousWide);
     if (w < 0)
         return;
     else if (w == 0)

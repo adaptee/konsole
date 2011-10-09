@@ -545,6 +545,9 @@ void SessionManager::applyProfile(Session* session, const Profile::Ptr profile ,
     // Monitor Silence
     if ( apply.shouldApply(Profile::SilenceSeconds) )
         session->setMonitorSilenceSeconds( profile->property<int>(Profile::SilenceSeconds) );
+           
+    if ( apply.shouldApply(Profile::CJKAmbiguousWide) )
+        session->setCJKAmbiguousWide( profile->property<bool>(Profile::CJKAmbiguousWide) ); 
 }
 
 void SessionManager::addProfile(Profile::Ptr type)

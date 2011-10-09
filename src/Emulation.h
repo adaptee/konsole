@@ -199,6 +199,8 @@ public:
    */
   QString keyBindings() const;
 
+  void setCJKAmbiguousWide(bool);
+
   /** 
    * Copies the current image into the history and clears the screen.
    */
@@ -458,6 +460,8 @@ protected:
   const QTextCodec* _codec;
   QTextDecoder* _decoder;
   const KeyboardTranslator* _keyTranslator; // the keyboard layout
+
+  bool _cjkAmbiguousWide;
 
 protected slots:
   /** 

@@ -278,6 +278,7 @@ public:
    */
   void setAddToUtmp(bool);
 
+  void setCJKAmbiguousWide(bool);
   /**
    * Specifies whether to close the session automatically when the terminal
    * process terminates.

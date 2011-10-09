@@ -57,6 +57,7 @@ Emulation::Emulation() :
   _codec(0),
   _decoder(0),
   _keyTranslator(0),
+  _cjkAmbiguousWide(false),
   _usesMouse(false),
   _imageSizeInitialized(false)
 {
@@ -193,6 +194,11 @@ void Emulation::setKeyBindings(const QString& name)
 QString Emulation::keyBindings() const
 {
     return _keyTranslator->name();
+}
+
+void Emulation::setCJKAmbiguousWide(bool set)
+{
+    _cjkAmbiguousWide = set;
 }
 
 // process application unicode input to terminal

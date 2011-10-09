@@ -1134,6 +1134,11 @@ void Session::setAddToUtmp(bool set)
     _addToUtmp = set;
 }
 
+void Session::setCJKAmbiguousWide(bool set)
+{
+    _emulation->setCJKAmbiguousWide(set);
+}
+
 void Session::setFlowControlEnabled(bool enabled)
 {
     _flowControl = enabled;

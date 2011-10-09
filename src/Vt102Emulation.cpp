@@ -467,7 +467,7 @@ void Vt102Emulation::processToken(int token, int p, int q)
   switch (token)
   {
 
-    case TY_CHR(         ) : _currentScreen->displayCharacter     (p         ); break; //UTF16
+    case TY_CHR(         ) : _currentScreen->displayCharacter     (p,_cjkAmbiguousWide); break; //UTF16
 
     //             127 DEL    : ignored on input
 
@@ -498,9 +498,9 @@ void Vt102Emulation::processToken(int token, int p, int q)
     case TY_CTL('U'      ) : /* NAK: ignored                      */ break;
     case TY_CTL('V'      ) : /* SYN: ignored                      */ break;
     case TY_CTL('W'      ) : /* ETB: ignored                      */ break;
-    case TY_CTL('X'      ) : _currentScreen->displayCharacter     (    0x2592); break; //VT100
+    case TY_CTL('X'      ) : _currentScreen->displayCharacter     (0x2592, _cjkAmbiguousWide); break; //VT100
     case TY_CTL('Y'      ) : /* EM : ignored                      */ break;
-    case TY_CTL('Z'      ) : _currentScreen->displayCharacter     (    0x2592); break; //VT100
+    case TY_CTL('Z'      ) : _currentScreen->displayCharacter     (0x2592, _cjkAmbiguousWide); break; //VT100
     case TY_CTL('['      ) : /* ESC: cannot be seen here.         */ break;
     case TY_CTL('\\'     ) : /* FS : ignored                      */ break;
     case TY_CTL(']'      ) : /* GS : ignored                      */ break;

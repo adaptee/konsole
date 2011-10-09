@@ -10,9 +10,8 @@
 #include <QtCore/QBool>
 #include <QtCore/QString>
 
-int konsole_wcwidth(quint16 ucs);
-int konsole_wcwidth_cjk(quint16 ucs);
+int konsole_wcwidth(quint16 ucs, bool CJKAmbiguousWide=false);
 
-int string_width( const QString& text );
+int string_width( const QString& text, bool CJKAmbiguousWide=false );
 
 #endif

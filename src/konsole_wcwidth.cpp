@@ -65,7 +65,7 @@ static int bisearch(quint16 ucs, const struct interval *table, int max) {
  * in ISO 10646.
  */
 
-int konsole_wcwidth(quint16 ucs)
+static int konsole_wcwidth_normal(quint16 ucs)
 {
   /* sorted list of non-overlapping intervals of non-spacing characters */
   static const struct interval combining[] = {
@@ -140,7 +140,7 @@ int konsole_wcwidth(quint16 ucs)
  * encodings who want to migrate to UCS. It is not otherwise
  * recommended for general use.
  */
-int konsole_wcwidth_cjk(quint16 ucs)
+static int konsole_wcwidth_cjk(quint16 ucs)
 {
   /* sorted list of non-overlapping intervals of East Asian Ambiguous
    * characters */
@@ -202,13 +202,21 @@ int konsole_wcwidth_cjk(quint16 ucs)
            sizeof(ambiguous) / sizeof(struct interval) - 1))
     return 2;
 
-  return konsole_wcwidth(ucs);
+  return konsole_wcwidth_normal(ucs);
 }
 
-int string_width( const QString& text )
+int konsole_wcwidth(quint16 ucs, bool CJKAmbiguousWide)
+{
+    if ( CJKAmbiguousWide )
+        return konsole_wcwidth_cjk(ucs);
+    else
+        return konsole_wcwidth_normal(ucs);
+}
+
+int string_width( const QString& text, bool CJKAmbiguousWide )
 {
     int w = 0;
     for ( int i = 0; i < text.length(); ++i )
-        w += konsole_wcwidth( text[i].unicode() );
+        w += konsole_wcwidth( text[i].unicode(), CJKAmbiguousWide );
     return w;
 }

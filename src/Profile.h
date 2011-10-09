@@ -146,6 +146,8 @@ public:
         ScrollBarPosition,  
         /** (bool) Specifies whether the terminal will enable Bidirectional text display */
         BidiRenderingEnabled,
+        /** (bool) Specifies whether the CJK charaters with ambiguous width should be seen as wide */
+        CJKAmbiguousWide,
         /** (bool) Specifies whether text in terminal displays is allowed to blink. */
         BlinkingTextEnabled,       
         /** (bool) Specifies whether the flow control keys ( typically Ctrl+S , Ctrl+Q )

@@ -106,6 +106,7 @@ const Profile::PropertyInfo Profile::DefaultPropertyNames[] =
     , { FlowControlEnabled , "FlowControlEnabled" , TERMINAL_GROUP , QVariant::Bool }
     , { AllowProgramsToResizeWindow , "AllowProgramsToResizeWindow" , TERMINAL_GROUP , QVariant::Bool }
     , { BidiRenderingEnabled , "BidiRenderingEnabled" , TERMINAL_GROUP , QVariant::Bool }
+    , { CJKAmbiguousWide , "CJKAmbiguousWide" , TERMINAL_GROUP , QVariant::Bool }
     , { BlinkingCursorEnabled , "BlinkingCursorEnabled" , TERMINAL_GROUP , QVariant::Bool }
     
     // Cursor 
@@ -185,6 +186,7 @@ FallbackProfile::FallbackProfile()
     
     setProperty(BlinkingCursorEnabled,false);
     setProperty(BidiRenderingEnabled,false);
+    setProperty(CJKAmbiguousWide,false);
     setProperty(CursorShape,BlockCursor);
     setProperty(UseCustomCursorColor,false);
     setProperty(CustomCursorColor,Qt::black);

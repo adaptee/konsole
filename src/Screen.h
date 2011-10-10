@@ -573,8 +573,11 @@ public:
         }
         return result;
     }
+    
+    void setCJKAmbiguousWide(bool);
 
     static const Character defaultChar;
+    
 
 private: 
 
@@ -701,6 +704,8 @@ private:
     // last position where we added a character
     int lastPos;
 
+
+    bool _cjkAmbiguousWide;
 };
 
 }

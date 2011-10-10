@@ -399,6 +399,8 @@ public:
      */
     bool isBidiEnabled() const { return _bidiEnabled; }
 
+    void setCJKAmbiguousWide(bool set) { _cjkAmbiguousWide = set; }
+
     /**
      * Sets the terminal screen section which is displayed in this widget.
      * When updateImage() is called, the display fetches the latest character image from the
@@ -733,6 +735,7 @@ private:
     bool _showTerminalSizeHint;
     bool _bidiEnabled;
     bool _mouseMarks;
+    bool _cjkAmbiguousWide;
 
     QPoint  _iPntSel; // initial selection point
     QPoint  _pntSel; // current selection point

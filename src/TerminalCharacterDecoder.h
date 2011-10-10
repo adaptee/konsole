@@ -62,7 +62,8 @@ public:
      */
     virtual void decodeLine(const Character* const characters, 
                             int count,
-                            LineProperty properties) = 0; 
+                            LineProperty properties,
+                            bool cjkAmbiguousWide) = 0;
 };
 
 /**
@@ -99,7 +100,8 @@ public:
 
     virtual void decodeLine(const Character* const characters,
                             int count,
-                            LineProperty properties);    
+                            LineProperty properties,
+                            bool cjkAmbiguousWide);
 
     
 private:
@@ -129,7 +131,8 @@ public:
         
     virtual void decodeLine(const Character* const characters,
                             int count,
-                            LineProperty properties);
+                            LineProperty properties,
+                            bool cjkAmbiguousWide);
 
     virtual void begin(QTextStream* output);
     virtual void end();

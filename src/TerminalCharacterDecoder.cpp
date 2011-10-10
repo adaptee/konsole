@@ -66,10 +66,10 @@ QList<int> PlainTextDecoder::linePositions() const
 {
     return _linePositions;
 }
-void PlainTextDecoder::decodeLine(const Character* const characters, int count, LineProperty /*properties*/
-                             )
+void PlainTextDecoder::decodeLine(const Character* const characters, int count, LineProperty properties, bool cjkAmbiguousWide)
 {
     Q_ASSERT( _output );
+    Q_UNUSED( properties );
 
     if (_recordLinePositions && _output->string())
     {
@@ -110,13 +110,13 @@ void PlainTextDecoder::decodeLine(const Character* const characters, int count, 
             {
                 const QString s = QString::fromUtf16(chars, extendedCharLength);
                 plainText.append(s);
-                i += string_width(s);
+                i += string_width(s, cjkAmbiguousWide);
             }
         }
         else
         {
             plainText.append( QChar(characters[i].character) );
-            i += qMax(1,konsole_wcwidth(characters[i].character));
+            i += qMax(1,konsole_wcwidth(characters[i].character, cjkAmbiguousWide));
         }
     }
     *_output << plainText;
@@ -158,10 +158,11 @@ void HTMLDecoder::end()
 }
 
 //TODO: Support for LineProperty (mainly double width , double height)
-void HTMLDecoder::decodeLine(const Character* const characters, int count, LineProperty /*properties*/
-                            )
+void HTMLDecoder::decodeLine(const Character* const characters, int count, LineProperty properties, bool cjkAmbiguousWide)
 {
     Q_ASSERT( _output );
+    Q_UNUSED( properties );
+    Q_UNUSED( cjkAmbiguousWide );
 
     QString text;
 

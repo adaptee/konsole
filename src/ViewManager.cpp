@@ -891,6 +891,8 @@ void ViewManager::applyProfileToView(TerminalDisplay* view , const Profile::Ptr 
 
     // word characters
     view->setWordCharacters( profile->property<QString>(Profile::WordCharacters) );
+
+    view->setCJKAmbiguousWide( profile->property<bool>(Profile::CJKAmbiguousWide) );
 }
 
 void ViewManager::applyProfileToContainer(ViewContainer* container , const Profile::Ptr profile)

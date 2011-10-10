@@ -371,7 +371,8 @@ public:
      * @param lineProperties The line properties to set for image
      */
     void setImage(const Character* const image , int lines , int columns,
-                  const QVector<LineProperty>& lineProperties);  
+                  const QVector<LineProperty>& lineProperties,
+                  bool cjkAmbiguousWide);  
 
 private:
     QString* _buffer;

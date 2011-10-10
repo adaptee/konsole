@@ -286,6 +286,7 @@ TerminalDisplay::TerminalDisplay(QWidget *parent)
 ,_resizing(false)
 ,_showTerminalSizeHint(true)
 ,_bidiEnabled(false)
+,_cjkAmbiguousWide(false)
 ,_actSel(0)
 ,_wordSelectionMode(false)
 ,_lineSelectionMode(false)
@@ -905,7 +906,8 @@ void TerminalDisplay::processFilters()
     _filterChain->setImage( _screenWindow->getImage(),
                             _screenWindow->windowLines(),
                             _screenWindow->windowColumns(),
-                            _screenWindow->getLineProperties() );
+                            _screenWindow->getLineProperties(),
+                            _cjkAmbiguousWide );
     _filterChain->process();
 
     QRegion postUpdateHotSpots = hotSpotRegion();
@@ -2519,7 +2521,7 @@ QVariant TerminalDisplay::inputMethodQuery( Qt::InputMethodQuery query ) const
                 QTextStream stream(&lineText);
                 PlainTextDecoder decoder;
                 decoder.begin(&stream);
-                decoder.decodeLine(&_image[loc(0,cursorPos.y())],_usedColumns,_lineProperties[cursorPos.y()]);
+                decoder.decodeLine(&_image[loc(0,cursorPos.y())],_usedColumns,_lineProperties[cursorPos.y()], _cjkAmbiguousWide);
                 decoder.end();
                 return lineText;
             }

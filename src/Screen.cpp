@@ -83,7 +83,8 @@ const Character Screen::defaultChar = Character(' ',
     selBegin(0), selTopLeft(0), selBottomRight(0),
     blockSelectionMode(false),
     effectiveForeground(CharacterColor()), effectiveBackground(CharacterColor()), effectiveRendition(0),
-    lastPos(-1)
+    lastPos(-1),
+    _cjkAmbiguousWide(false)
 {
     lineProperties.resize(lines+1);
     for (int i=0;i<lines+1;i++)
@@ -1169,6 +1170,11 @@ bool Screen::isSelectionValid() const
     return selTopLeft >= 0 && selBottomRight >= 0;
 }
 
+void Screen::setCJKAmbiguousWide(bool set)
+{
+    _cjkAmbiguousWide = set;
+}
+
 void Screen::writeSelectionToStream(TerminalCharacterDecoder* decoder , 
         bool preserveLineBreaks) const
 {
@@ -1214,7 +1220,7 @@ void Screen::writeToStream(TerminalCharacterDecoder* decoder,
                 copied < count    )
         {
             Character newLineChar('\n');
-            decoder->decodeLine(&newLineChar,1,0);
+            decoder->decodeLine(&newLineChar,1,0, false);
         }
     }    
 }
@@ -1310,7 +1316,7 @@ int Screen::copyLineToStream(int line ,
 
     //decode line and write to text stream    
     decoder->decodeLine( (Character*) characterBuffer , 
-            count, currentLineProperties );
+            count, currentLineProperties, _cjkAmbiguousWide );
 
     return count;
 }

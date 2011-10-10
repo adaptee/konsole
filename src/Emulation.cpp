@@ -199,6 +199,8 @@ QString Emulation::keyBindings() const
 void Emulation::setCJKAmbiguousWide(bool set)
 {
     _cjkAmbiguousWide = set;
+    _screen[0]->setCJKAmbiguousWide(set);
+    _screen[1]->setCJKAmbiguousWide(set);
 }
 
 // process application unicode input to terminal

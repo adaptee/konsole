@@ -129,7 +129,7 @@ TerminalImageFilterChain::~TerminalImageFilterChain()
     delete _linePositions;
 }
 
-void TerminalImageFilterChain::setImage(const Character* const image , int lines , int columns, const QVector<LineProperty>& lineProperties)
+void TerminalImageFilterChain::setImage(const Character* const image , int lines , int columns, const QVector<LineProperty>& lineProperties, bool cjkAmbiguousWide)
 {
     if (empty())
         return;
@@ -158,7 +158,7 @@ void TerminalImageFilterChain::setImage(const Character* const image , int lines
     for (int i=0 ; i < lines ; i++)
     {
         _linePositions->append(_buffer->length());
-        decoder.decodeLine(image + i*columns,columns,LINE_DEFAULT);
+        decoder.decodeLine(image + i*columns,columns,LINE_DEFAULT,cjkAmbiguousWide);
 
         // pretend that each line ends with a newline character.
         // this prevents a link that occurs at the end of one line

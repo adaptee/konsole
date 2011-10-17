@@ -186,7 +186,7 @@ FallbackProfile::FallbackProfile()
     
     setProperty(BlinkingCursorEnabled,false);
     setProperty(BidiRenderingEnabled,false);
-    setProperty(CJKAmbiguousWide,false);
+    setProperty(CJKAmbiguousWide,true);
     setProperty(CursorShape,BlockCursor);
     setProperty(UseCustomCursorColor,false);
     setProperty(CustomCursorColor,Qt::black);

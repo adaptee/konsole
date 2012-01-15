@@ -55,6 +55,8 @@ public:
     /** Returns the title associated with a view */
     QString title() const;
 
+    virtual QString userTitle() const =0;
+
     /**
      * Returns the URL current associated with a view.
      * The default implementation returns an empty URL.

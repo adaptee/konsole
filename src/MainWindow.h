@@ -180,6 +180,8 @@ private slots:
     void openUrls(const QList<KUrl>& urls);
 
     void applyKonsoleSettings();
+    
+    void updateCaption();
 
 private:
     void correctShortcuts();

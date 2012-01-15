@@ -105,6 +105,8 @@ public:
         return _view;
     }
 
+    virtual QString userTitle () const;
+
     /**
      * Returns true if the controller is valid.
      * A valid controller is one which has a non-null session() and view().
@@ -154,6 +156,8 @@ signals:
      * menus.
      */
     void focused(SessionController* controller);
+
+    void rawTitleChanged();
 
 public slots:
     /**

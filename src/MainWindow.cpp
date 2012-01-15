@@ -225,16 +225,19 @@ void MainWindow::activeViewChanged(SessionController* controller)
     connect(controller , SIGNAL(titleChanged(ViewProperties*)) ,
             this , SLOT(activeViewTitleChanged(ViewProperties*)));
 
+    connect(controller , SIGNAL(rawTitleChanged()) ,
+            this , SLOT(updateCaption()));
+
     controller->setShowMenuAction(_toggleMenuBarAction);
     guiFactory()->addClient(controller);
 
     // set the current session's search bar
     controller->setSearchBar(searchBar());
 
+    _pluggedController = controller;
+
     // update session title to match newly activated session
     activeViewTitleChanged(controller);
-
-    _pluggedController = controller;
 
     // Update window icon to newly activated session's icon
     updateWindowIcon();
@@ -242,7 +245,24 @@ void MainWindow::activeViewChanged(SessionController* controller)
 
 void MainWindow::activeViewTitleChanged(ViewProperties* properties)
 {
-    setPlainCaption(properties->title());
+    updateCaption();
+}
+
+void MainWindow::updateCaption()
+{
+    if ( !_pluggedController)
+        return;
+
+    const QString& userTitle = _pluggedController->userTitle();
+    const QString& title = _pluggedController->title();
+
+    if ( !userTitle.isEmpty() ) {
+        setPlainCaption(userTitle);
+    }
+    else
+    {
+        setPlainCaption(title);
+    }
 }
 
 void MainWindow::updateWindowIcon()

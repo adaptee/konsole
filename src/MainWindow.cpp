@@ -275,6 +275,8 @@ void MainWindow::setupActions()
     connect(action , SIGNAL(triggered()) , this , SLOT(newWindow()));
 
     action = KStandardAction::quit(this , SLOT(close()) , collection);
+    action->setIcon(KIcon("window-close"));
+    action->setText(i18n("Close Window"));
     // the default shortcut for quit is typically Ctrl+[Some Letter, usually Q]
     // but that is reserved for use by terminal applications
     action->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_Q));

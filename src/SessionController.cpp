@@ -498,6 +498,18 @@ void SessionController::setupCommonActions()
     collection->addAction("switch-profile", _switchProfileMenu);
     connect(_switchProfileMenu->menu(), SIGNAL(aboutToShow()), this, SLOT(prepareSwitchProfileMenu()));
 
+    // History
+    _searchToggleAction = KStandardAction::find(this, 0, collection);
+    _searchToggleAction->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_F));
+    _searchToggleAction->setCheckable(true);
+    connect(_searchToggleAction, SIGNAL(toggled(bool)), this, SLOT(searchHistory(bool)));
+
+    _findNextAction = KStandardAction::findNext(this, SLOT(findNextInHistory()), collection);
+    _findNextAction->setEnabled(false);
+
+    _findPreviousAction = KStandardAction::findPrev(this, SLOT(findPreviousInHistory()), collection);
+    _findPreviousAction->setShortcut(QKeySequence(Qt::SHIFT + Qt::Key_F3));
+    _findPreviousAction->setEnabled(false);
 }
 
 void SessionController::setupExtraActions()
@@ -578,18 +590,6 @@ void SessionController::setupExtraActions()
     action->setIcon(KIcon("format-font-size-less"));
     action->setShortcut(KShortcut(Qt::CTRL | Qt::Key_Minus));
 
-    // History
-    _searchToggleAction = KStandardAction::find(this, 0, collection);
-    _searchToggleAction->setShortcut(QKeySequence(Qt::CTRL + Qt::SHIFT + Qt::Key_F));
-    _searchToggleAction->setCheckable(true);
-    connect(_searchToggleAction, SIGNAL(toggled(bool)), this, SLOT(searchHistory(bool)));
-
-    _findNextAction = KStandardAction::findNext(this, SLOT(findNextInHistory()), collection);
-    _findNextAction->setEnabled(false);
-
-    _findPreviousAction = KStandardAction::findPrev(this, SLOT(findPreviousInHistory()), collection);
-    _findPreviousAction->setShortcut(QKeySequence(Qt::SHIFT + Qt::Key_F3));
-    _findPreviousAction->setEnabled(false);
 }
 
 void SessionController::switchProfile(Profile::Ptr profile)

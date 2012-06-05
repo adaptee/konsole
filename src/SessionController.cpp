@@ -22,8 +22,8 @@
 #include "SessionController.h"
 
 // Qt
-#include <QtGui/QApplication>
-#include <QtGui/QMenu>
+#include <QtWidgets/QApplication>
+#include <QtWidgets/QMenu>
 #include <QtGui/QKeyEvent>
 
 // KDE

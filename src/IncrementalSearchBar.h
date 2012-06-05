@@ -21,7 +21,7 @@
 #define INCREMENTALSEARCHBAR_H
 
 // Qt
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 #include <QtCore/QBitArray>
 
 class QAction;

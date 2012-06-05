@@ -21,8 +21,8 @@
 #define TABTITLEFORMATBUTTON_H
 
 // Qt
-#include <QtGui/QPushButton>
-#include <QtGui/QAction>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QAction>
 
 // Konsole
 #include "Session.h"

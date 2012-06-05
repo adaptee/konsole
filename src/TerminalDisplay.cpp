@@ -24,20 +24,20 @@
 #include "TerminalDisplay.h"
 
 // Qt
-#include <QtGui/QApplication>
+#include <QtWidgets/QApplication>
 #include <QtGui/QClipboard>
 #include <QtGui/QKeyEvent>
 #include <QtCore/QEvent>
 #include <QtCore/QFileInfo>
-#include <QtGui/QGridLayout>
-#include <QtGui/QAction>
-#include <QtGui/QLabel>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QLabel>
 #include <QtGui/QPainter>
 #include <QtGui/QPixmap>
-#include <QtGui/QScrollBar>
-#include <QtGui/QStyle>
+#include <QtWidgets/QScrollBar>
+#include <QtWidgets/QStyle>
 #include <QtCore/QTimer>
-#include <QtGui/QToolTip>
+#include <QtWidgets/QToolTip>
 #include <QtGui/QAccessible>
 
 // KDE

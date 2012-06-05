@@ -21,7 +21,7 @@
 #define RENAMETABWIDGET_H
 
 // Qt
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 namespace Ui
 {

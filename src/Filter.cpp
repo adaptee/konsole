@@ -21,8 +21,8 @@
 #include "Filter.h"
 
 // Qt
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
+#include <QtWidgets/QAction>
+#include <QtWidgets/QApplication>
 #include <QtGui/QClipboard>
 #include <QtCore/QString>
 #include <QtCore/QTextStream>

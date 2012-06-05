@@ -23,13 +23,13 @@
 #include "ViewContainer.h"
 
 // Qt
-#include <QtGui/QStackedWidget>
-#include <QtGui/QToolButton>
+#include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QToolButton>
 #include <QtGui/QDrag>
 #include <QtGui/QDragMoveEvent>
 #include <QtCore/QMimeData>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QVBoxLayout>
 
 // KDE
 #include <KColorScheme>

@@ -21,7 +21,7 @@
 #define EDITPROFILEDIALOG_H
 
 // Qt
-#include <QtGui/QAbstractItemDelegate>
+#include <QtWidgets/QAbstractItemDelegate>
 #include <QtCore/QHash>
 #include <QtCore/QPointer>
 

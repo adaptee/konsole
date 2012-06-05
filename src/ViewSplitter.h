@@ -24,7 +24,7 @@
 
 // Qt
 #include <QtCore/QList>
-#include <QtGui/QSplitter>
+#include <QtWidgets/QSplitter>
 
 class QFocusEvent;
 

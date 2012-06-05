@@ -22,7 +22,7 @@
 #define HISTORYSIZEWIDGET_H
 
 // Qt
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 // Konsole
 #include "Enumeration.h"

@@ -22,7 +22,7 @@
 
 // Qt
 #include <QtCore/QFileInfo>
-#include <QtGui/QStandardItem>
+#include <QtWidgets/QStandardItem>
 
 // KDE
 #include <KKeySequenceWidget>

@@ -21,9 +21,9 @@
 #include "PartTest.h"
 
 // Qt
-#include <QtGui/QWidget>
-#include <QtGui/QLabel>
-#include <QtGui/QVBoxLayout>
+#include <QtWidgets/QWidget>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QVBoxLayout>
 #include <QtGui/QKeyEvent>
 #include <qtestkeyboard.h>
 

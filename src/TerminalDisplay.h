@@ -24,7 +24,7 @@
 // Qt
 #include <QtGui/QColor>
 #include <QtCore/QPointer>
-#include <QtGui/QWidget>
+#include <QtWidgets/QWidget>
 
 // Konsole
 #include "Character.h"

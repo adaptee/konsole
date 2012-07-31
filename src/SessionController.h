@@ -29,8 +29,8 @@
 #include <QtCore/QHash>
 
 // KDE
-#include <KIcon>
-#include <KXMLGUIClient>
+#include <KDE/KIcon>
+#include <KDE/KXMLGUIClient>
 
 // Konsole
 #include "ViewProperties.h"

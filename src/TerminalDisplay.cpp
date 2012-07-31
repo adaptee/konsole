@@ -41,16 +41,16 @@
 #include <QtGui/QAccessible>
 
 // KDE
-#include <KShell>
-#include <KColorScheme>
-#include <KCursor>
-#include <KDebug>
-#include <KLocalizedString>
-#include <KNotification>
-#include <KGlobalSettings>
+#include <KDE/KShell>
+#include <KDE/KColorScheme>
+#include <KDE/KCursor>
+#include <KDE/KDebug>
+#include <KDE/KLocalizedString>
+#include <KDE/KNotification>
+#include <KDE/KGlobalSettings>
 #include <KIO/NetAccess>
 #include <konq_operations.h>
-#include <KFileItem>
+#include <KDE/KFileItem>
 
 // Konsole
 #include "Filter.h"

@@ -26,7 +26,7 @@
 #include <QtCore/QMetaType>
 
 // KDE
-#include <KSharedPtr>
+#include <KDE/KSharedPtr>
 
 // Konsole
 #include "CharacterColor.h"

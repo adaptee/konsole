@@ -22,7 +22,7 @@
 #define HISTORYSIZEDIALOG_H
 
 // KDE
-#include <KDialog>
+#include <KDE/KDialog>
 
 // Konsole
 #include "Enumeration.h"

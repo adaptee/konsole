@@ -21,7 +21,7 @@
 #define APPLICATION_H
 
 // KDE
-#include <KUniqueApplication>
+#include <KDE/KUniqueApplication>
 
 // Konsole
 #include "Profile.h"

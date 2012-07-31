@@ -29,8 +29,8 @@
 #include <QtCore/QStringList>
 
 // KDE
-#include <KDebug>
-#include <KPtyDevice>
+#include <KDE/KDebug>
+#include <KDE/KPtyDevice>
 #include <kde_file.h>
 
 using Konsole::Pty;

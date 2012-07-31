@@ -32,15 +32,15 @@
 #include <sys/types.h>
 
 // KDE
-#include <KMenu>
-#include <KMenuBar>
+#include <KDE/KMenu>
+#include <KDE/KMenuBar>
 #include <KPluginLoader>
-#include <KPluginFactory>
+#include <KDE/KPluginFactory>
 #include <KService>
 #include <KParts/Part>
-#include <KPtyProcess>
-#include <KPtyDevice>
-#include <KDialog>
+#include <KDE/KPtyProcess>
+#include <KDE/KPtyDevice>
+#include <KDE/KDialog>
 #include <KMainWindow>
 #include <qtest_kde.h>
 

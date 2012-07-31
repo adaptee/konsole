@@ -27,11 +27,11 @@
 #include <QtDBus/QtDBus>
 
 // KDE
-#include <KAcceleratorManager>
-#include <KLocalizedString>
-#include <KAction>
-#include <KActionCollection>
-#include <KConfigGroup>
+#include <KDE/KAcceleratorManager>
+#include <KDE/KLocalizedString>
+#include <KDE/KAction>
+#include <KDE/KActionCollection>
+#include <KDE/KConfigGroup>
 
 // Konsole
 #include <windowadaptor.h>

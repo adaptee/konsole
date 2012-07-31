@@ -22,7 +22,7 @@
 #include "WindowSystemInfo.h"
 
 // KDE
-#include <KWindowSystem>
+#include <KDE/KWindowSystem>
 
 using Konsole::WindowSystemInfo;
 

@@ -28,9 +28,9 @@
 #include <QtCore/QFileInfo>
 
 // KDE
-#include <KShell>
-#include <KBookmarkMenu>
-#include <KStandardDirs>
+#include <KDE/KShell>
+#include <KDE/KBookmarkMenu>
+#include <KDE/KStandardDirs>
 
 // Konsole
 #include "ViewProperties.h"

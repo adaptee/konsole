@@ -29,10 +29,10 @@
 #include <QtGui/QMenu>
 
 // KDE
-#include <KColorScheme>
-#include <KLineEdit>
-#include <KLocalizedString>
-#include <KIcon>
+#include <KDE/KColorScheme>
+#include <KDE/KLineEdit>
+#include <KDE/KLocalizedString>
+#include <KDE/KIcon>
 
 using namespace Konsole;
 

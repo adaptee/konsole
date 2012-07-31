@@ -34,7 +34,7 @@
 #include <QtGui/QWidget>
 
 // KDE
-#include <KUrl>
+#include <KDE/KUrl>
 
 // Konsole
 #include "konsole_export.h"

@@ -21,7 +21,7 @@
 #define RENAMETABDIALOG_H
 
 // KDE
-#include <KDialog>
+#include <KDE/KDialog>
 
 namespace Ui
 {

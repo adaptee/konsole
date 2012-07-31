@@ -26,8 +26,8 @@
 #include <QtCore/QTextCodec>
 
 // KDE
-#include <KGlobalSettings>
-#include <KLocalizedString>
+#include <KDE/KGlobalSettings>
+#include <KDE/KLocalizedString>
 
 // Konsole
 #include "Enumeration.h"

@@ -31,8 +31,8 @@
 
 // KDE
 #include <kde_file.h>
-#include <KDebug>
-#include <KStandardDirs>
+#include <KDE/KDebug>
+#include <KDE/KStandardDirs>
 
 // Reasonable line size
 static const int LINE_SIZE = 1024;

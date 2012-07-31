@@ -24,8 +24,8 @@
 #include <QtCore/QPointer>
 
 // KDE
-#include <KXmlGuiWindow>
-#include <KUrl>
+#include <KDE/KXmlGuiWindow>
+#include <KDE/KUrl>
 
 // Konsole
 #include "Profile.h"

@@ -25,7 +25,7 @@
 #include <QtCore/QSet>
 
 // KDE
-#include <KDialog>
+#include <KDE/KDialog>
 
 // Konsole
 #include "SessionManager.h"

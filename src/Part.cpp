@@ -26,10 +26,10 @@
 #include <QtGui/QKeyEvent>
 
 // KDE
-#include <KAction>
-#include <KActionCollection>
-#include <KLocale>
-#include <KPluginFactory>
+#include <KDE/KAction>
+#include <KDE/KActionCollection>
+#include <KDE/KLocale>
+#include <KDE/KPluginFactory>
 #include <kde_file.h>
 
 // Konsole

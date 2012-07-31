@@ -28,10 +28,10 @@
 #include <QtCore/QTextCodec>
 
 // KDE
-#include <KConfig>
-#include <KConfigGroup>
-#include <KGlobal>
-#include <KDebug>
+#include <KDE/KConfig>
+#include <KDE/KConfigGroup>
+#include <KDE/KGlobal>
+#include <KDE/KDebug>
 
 // Konsole
 #include "Session.h"

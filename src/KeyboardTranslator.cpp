@@ -32,8 +32,8 @@
 #include <QtGui/QKeySequence>
 
 // KDE
-#include <KDebug>
-#include <KLocalizedString>
+#include <KDE/KDebug>
+#include <KDE/KLocalizedString>
 
 using namespace Konsole;
 

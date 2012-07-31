@@ -28,11 +28,11 @@
 #include <QtCore/QFile>
 
 // KDE
-#include <KStandardDirs>
-#include <KGlobal>
-#include <KConfig>
-#include <KLocalizedString>
-#include <KDebug>
+#include <KDE/KStandardDirs>
+#include <KDE/KGlobal>
+#include <KDE/KConfig>
+#include <KDE/KLocalizedString>
+#include <KDE/KDebug>
 
 using namespace Konsole;
 

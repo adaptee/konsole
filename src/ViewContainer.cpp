@@ -32,11 +32,11 @@
 #include <QtGui/QVBoxLayout>
 
 // KDE
-#include <KColorScheme>
-#include <KColorUtils>
-#include <KLocalizedString>
-#include <KMenu>
-#include <KIcon>
+#include <KDE/KColorScheme>
+#include <KDE/KColorUtils>
+#include <KDE/KLocalizedString>
+#include <KDE/KMenu>
+#include <KDE/KIcon>
 
 // Konsole
 #include "IncrementalSearchBar.h"

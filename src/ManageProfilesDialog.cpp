@@ -25,9 +25,9 @@
 #include <QtGui/QStandardItem>
 
 // KDE
-#include <KKeySequenceWidget>
-#include <KStandardDirs>
-#include <KDebug>
+#include <KDE/KKeySequenceWidget>
+#include <KDE/KStandardDirs>
+#include <KDE/KDebug>
 
 // Konsole
 #include "EditProfileDialog.h"

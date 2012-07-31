@@ -29,11 +29,11 @@
 #include <QtCore/QString>
 
 // KDE
-#include <KConfig>
-#include <KGlobal>
-#include <KDebug>
-#include <KConfigGroup>
-#include <KStandardDirs>
+#include <KDE/KConfig>
+#include <KDE/KGlobal>
+#include <KDE/KDebug>
+#include <KDE/KConfigGroup>
+#include <KDE/KStandardDirs>
 
 // Konsole
 #include "ProfileReader.h"

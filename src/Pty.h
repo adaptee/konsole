@@ -27,7 +27,7 @@
 #include <QtCore/QSize>
 
 // KDE
-#include <KPtyProcess>
+#include <KDE/KPtyProcess>
 
 // Konsole
 #include "konsole_export.h"

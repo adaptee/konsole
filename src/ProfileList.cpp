@@ -25,9 +25,9 @@
 #include <QtGui/QActionGroup>
 
 // KDE
-#include <KIcon>
-#include <KLocalizedString>
-#include <KDebug>
+#include <KDE/KIcon>
+#include <KDE/KLocalizedString>
+#include <KDE/KDebug>
 
 // Konsole
 #include "ProfileManager.h"

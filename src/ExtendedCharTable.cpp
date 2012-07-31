@@ -23,7 +23,7 @@
 #include "ExtendedCharTable.h"
 
 // KDE
-#include <KDebug>
+#include <KDE/KDebug>
 
 // Konsole
 #include "TerminalDisplay.h"

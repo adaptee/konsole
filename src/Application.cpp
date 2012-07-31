@@ -26,10 +26,10 @@
 #include <QtCore/QDir>
 
 // KDE
-#include <KAction>
-#include <KActionCollection>
-#include <KCmdLineArgs>
-#include <KDebug>
+#include <KDE/KAction>
+#include <KDE/KActionCollection>
+#include <KDE/KCmdLineArgs>
+#include <KDE/KDebug>
 
 // Konsole
 #include "SessionManager.h"

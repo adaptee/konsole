@@ -20,8 +20,8 @@
 #include "ZModemDialog.h"
 
 // KDE
-#include <KLocalizedString>
-#include <KTextEdit>
+#include <KDE/KLocalizedString>
+#include <KDE/KTextEdit>
 
 using Konsole::ZModemDialog;
 

@@ -27,10 +27,10 @@
 #include <QtGui/QPainter>
 
 // KDE
-#include <KColorScheme>
-#include <KConfig>
-#include <KLocalizedString>
-#include <KConfigGroup>
+#include <KDE/KColorScheme>
+#include <KDE/KConfig>
+#include <KDE/KLocalizedString>
+#include <KDE/KConfigGroup>
 
 namespace {
 const int FGCOLOR_INDEX = 0;

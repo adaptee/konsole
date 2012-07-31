@@ -25,9 +25,9 @@
 #include <kde_file.h>
 
 // KDE
-#include <KAboutData>
-#include <KCmdLineArgs>
-#include <KLocale>
+#include <KDE/KAboutData>
+#include <KDE/KCmdLineArgs>
+#include <KDE/KLocale>
 
 #define KONSOLE_VERSION "2.9.999"
 

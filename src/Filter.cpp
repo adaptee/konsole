@@ -28,8 +28,8 @@
 #include <QtCore/QTextStream>
 
 // KDE
-#include <KLocalizedString>
-#include <KRun>
+#include <KDE/KLocalizedString>
+#include <KDE/KRun>
 
 // Konsole
 #include "TerminalCharacterDecoder.h"

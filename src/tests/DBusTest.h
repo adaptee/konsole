@@ -25,8 +25,8 @@
 #include <QtDBus/QDBusInterface>
 #include <QtDBus/QDBusReply>
 #include <QtCore/QTextCodec>
-#include <KDebug>
-#include <KProcess>
+#include <KDE/KDebug>
+#include <KDE/KProcess>
 
 #include <unistd.h>
 

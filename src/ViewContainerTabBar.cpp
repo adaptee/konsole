@@ -29,8 +29,8 @@
 #include <QtGui/QDragMoveEvent>
 
 // KDE
-#include <KLocalizedString>
-#include <KIcon>
+#include <KDE/KLocalizedString>
+#include <KDE/KIcon>
 
 using Konsole::ViewContainerTabBar;
 

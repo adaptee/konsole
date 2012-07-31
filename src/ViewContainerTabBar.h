@@ -23,7 +23,7 @@
 #define VIEWCONTAINERTABBAR_H
 
 // KDE
-#include <KTabBar>
+#include <KDE/KTabBar>
 
 class QLabel;
 

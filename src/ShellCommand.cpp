@@ -21,7 +21,7 @@
 #include "ShellCommand.h"
 
 // KDE
-#include <KShell>
+#include <KDE/KShell>
 
 using Konsole::ShellCommand;
 

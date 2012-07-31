@@ -33,8 +33,8 @@
 #include <QtGui/QKeyEvent>
 
 // KDE
-#include <KLocalizedString>
-#include <KDebug>
+#include <KDE/KLocalizedString>
+#include <KDE/KDebug>
 
 // Konsole
 #include "KeyboardTranslator.h"

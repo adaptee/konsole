@@ -27,8 +27,8 @@
 #include <QtCore/QFileInfo>
 
 // KDE
-#include <KDebug>
-#include <KStandardDirs>
+#include <KDE/KDebug>
+#include <KDE/KStandardDirs>
 
 using namespace Konsole;
 

@@ -25,7 +25,7 @@
 #define BOOKMARKHANDLER_H
 
 // KDE
-#include <KBookmarkManager>
+#include <KDE/KBookmarkManager>
 
 // Konsole
 #include "konsole_export.h"

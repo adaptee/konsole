@@ -39,11 +39,11 @@
 #include <QtNetwork/QHostInfo>
 
 // KDE
-#include <KConfigGroup>
-#include <KGlobal>
-#include <KSharedConfig>
-#include <KUser>
-#include <KDebug>
+#include <KDE/KConfigGroup>
+#include <KDE/KGlobal>
+#include <KDE/KSharedConfig>
+#include <KDE/KUser>
+#include <KDE/KDebug>
 
 #if defined(Q_OS_MAC)
 #include <sys/sysctl.h>

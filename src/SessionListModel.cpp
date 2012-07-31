@@ -23,8 +23,8 @@
 #include "SessionListModel.h"
 
 // KDE
-#include <KIcon>
-#include <KLocalizedString>
+#include <KDE/KIcon>
+#include <KDE/KLocalizedString>
 
 // Konsole
 #include "Session.h"

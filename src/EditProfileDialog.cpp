@@ -35,14 +35,14 @@
 
 // KDE
 #include <kcodecaction.h>
-#include <KFontDialog>
-#include <KIcon>
-#include <KIconDialog>
-#include <KFileDialog>
-#include <KUrlCompletion>
-#include <KWindowSystem>
-#include <KTextEdit>
-#include <KMessageBox>
+#include <KDE/KFontDialog>
+#include <KDE/KIcon>
+#include <KDE/KIconDialog>
+#include <KDE/KFileDialog>
+#include <KDE/KUrlCompletion>
+#include <KDE/KWindowSystem>
+#include <KDE/KTextEdit>
+#include <KDE/KMessageBox>
 
 // Konsole
 #include "ColorScheme.h"

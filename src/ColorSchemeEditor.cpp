@@ -25,10 +25,10 @@
 #include <QtCore/QFileInfo>
 
 // KDE
-#include <KColorDialog>
-#include <KWindowSystem>
-#include <KFileDialog>
-#include <KUrlCompletion>
+#include <KDE/KColorDialog>
+#include <KDE/KWindowSystem>
+#include <KDE/KFileDialog>
+#include <KDE/KUrlCompletion>
 
 // Konsole
 #include "ui_ColorSchemeEditor.h"

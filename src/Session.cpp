@@ -38,14 +38,14 @@
 #include <QtDBus/QtDBus>
 
 // KDE
-#include <KDebug>
-#include <KLocalizedString>
-#include <KNotification>
-#include <KRun>
-#include <KShell>
-#include <KProcess>
-#include <KStandardDirs>
-#include <KConfigGroup>
+#include <KDE/KDebug>
+#include <KDE/KLocalizedString>
+#include <KDE/KNotification>
+#include <KDE/KRun>
+#include <KDE/KShell>
+#include <KDE/KProcess>
+#include <KDE/KStandardDirs>
+#include <KDE/KConfigGroup>
 
 // Konsole
 #include <sessionadaptor.h>

@@ -27,26 +27,26 @@
 #include <QtGui/QKeyEvent>
 
 // KDE
-#include <KAction>
-#include <KActionMenu>
-#include <KActionCollection>
-#include <KIcon>
-#include <KLocalizedString>
-#include <KMenu>
-#include <KMessageBox>
-#include <KRun>
-#include <KShell>
-#include <KToolInvocation>
-#include <KStandardDirs>
-#include <KToggleAction>
-#include <KSelectAction>
-#include <KUrl>
-#include <KXmlGuiWindow>
-#include <KXMLGUIFactory>
-#include <KXMLGUIBuilder>
-#include <KDebug>
-#include <KUriFilter>
-#include <KStringHandler>
+#include <KDE/KAction>
+#include <KDE/KActionMenu>
+#include <KDE/KActionCollection>
+#include <KDE/KIcon>
+#include <KDE/KLocalizedString>
+#include <KDE/KMenu>
+#include <KDE/KMessageBox>
+#include <KDE/KRun>
+#include <KDE/KShell>
+#include <KDE/KToolInvocation>
+#include <KDE/KStandardDirs>
+#include <KDE/KToggleAction>
+#include <KDE/KSelectAction>
+#include <KDE/KUrl>
+#include <KDE/KXmlGuiWindow>
+#include <KDE/KXMLGUIFactory>
+#include <KDE/KXMLGUIBuilder>
+#include <KDE/KDebug>
+#include <KDE/KUriFilter>
+#include <KDE/KStringHandler>
 #include <kcodecaction.h>
 
 // Konsole
@@ -66,9 +66,9 @@
 #include "Enumeration.h"
 
 // for SaveHistoryTask
-#include <KFileDialog>
+#include <KDE/KFileDialog>
 #include <KIO/Job>
-#include <KJob>
+#include <KDE/KJob>
 #include "TerminalCharacterDecoder.h"
 
 using namespace Konsole;

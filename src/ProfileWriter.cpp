@@ -26,10 +26,10 @@
 #include <QtCore/QFileInfo>
 
 // KDE
-#include <KConfig>
-#include <KConfigGroup>
-#include <KGlobal>
-#include <KStandardDirs>
+#include <KDE/KConfig>
+#include <KDE/KConfigGroup>
+#include <KDE/KGlobal>
+#include <KDE/KStandardDirs>
 
 // Konsole
 #include "ShellCommand.h"

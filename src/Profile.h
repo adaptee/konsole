@@ -30,7 +30,7 @@
 #include <QtGui/QColor>
 
 // KDE
-#include <KSharedPtr>
+#include <KDE/KSharedPtr>
 
 // Konsole
 #include "konsole_export.h"

@@ -631,10 +631,10 @@ private:
         if (sysctl(managementInfoBase, 4, NULL, &mibLength, NULL, 0) == -1)
             return false;
 
-        kInfoProc = new struct kinfo_proc [mibLength];
+        kInfoProc = (struct kinfo_proc*) malloc(mibLength);
 
         if (sysctl(managementInfoBase, 4, kInfoProc, &mibLength, NULL, 0) == -1) {
-            delete [] kInfoProc;
+            free(kInfoProc);
             return false;
         }
 
@@ -654,7 +654,7 @@ private:
 
         readUserName();
 
-        delete [] kInfoProc;
+        free(kInfoProc);
         return true;
     }
 

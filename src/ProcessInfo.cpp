@@ -1214,27 +1214,32 @@ SSHProcessInfo::SSHProcessInfo(const ProcessInfo& process)
 
     // check that this is a SSH process
     const QString& name = process.name(&ok);
-
     if (!ok) {
-        kWarning() << "Could not read process info";
-        return;
-    }
-
-    if (name != "ssh") {
-        kWarning() << "Process is not a SSH process";
+        kWarning() << "Could not read process name";
         return;
     }
 
     // read its whole cmdlind arguments
     const QVector<QString>& args = process.arguments(&ok);
-
     if (!ok) {
         kWarning() << "Could not read process cmdline arguments";
         return;
     }
 
+    //if (name != "ssh") {
+        //kWarning() << "Process is not a SSH process";
+        //return;
+    //}
+
     // now parse it to get useful information
-    const QHash<QString,QString> results = parseSSHCommand(args);
+    QHash<QString,QString> results;
+    if (name == "ssh") {
+        results = parseSSHCommand(args);
+    } else if (name =="mosh-client")
+    {
+        results = parseMOSHCommand(args);
+    }
+
 
     _user = results["user"];
     _host = results["host"];

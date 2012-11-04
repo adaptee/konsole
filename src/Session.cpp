@@ -982,7 +982,8 @@ QString Session::getDynamicTitle()
     // format tab titles using process info
     bool ok = false;
     QString title;
-    if (process->name(&ok) == "ssh" && ok) {
+    if ((process->name(&ok) == "ssh" && ok) ||
+        (process->name(&ok) == "mosh-client" && ok)) {
         SSHProcessInfo sshInfo(*process);
         title = sshInfo.format(tabTitleFormat(Session::RemoteTabTitle));
     } else {
@@ -1004,7 +1005,8 @@ KUrl Session::getUrl()
         if (isForegroundProcessActive()) {
             // for remote connections, save the user and host
             // bright ideas to get the directory at the other end are welcome :)
-            if (_foregroundProcessInfo->name(&ok) == "ssh" && ok) {
+            if ((_foregroundProcessInfo->name(&ok) == "ssh" && ok) ||
+                (_foregroundProcessInfo->name(&ok) == "mosh-client" && ok))   {
                 SSHProcessInfo sshInfo(*_foregroundProcessInfo);
 
                 path = "ssh://" + sshInfo.userName() + '@' + sshInfo.host();

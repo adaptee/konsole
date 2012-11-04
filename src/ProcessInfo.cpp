@@ -1117,8 +1117,18 @@ QHash<QString,QString> parseSSHCommand(const QVector<QString>& tokens)
     return results;
 }
 
-QHash<QString,QString> parseMOSHCommand(const QVector<QString>& tokens)
+QHash<QString,QString> parseMOSHCommand(const QVector<QString>& rawTokens)
 {
+
+    // ugly operation due to the strange cmdline form of mosh-client
+    QStringList tempList = rawTokens[0].split(" ");
+
+    QVector<QString> tempTokens;
+    foreach (const QString& s, tempList)
+        tempTokens << s;
+
+    const QVector<QString>& tokens = tempTokens;
+
     QHash<QString,QString> results;
 
     // options which take no arguments

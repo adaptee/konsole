@@ -1117,6 +1117,87 @@ QHash<QString,QString> parseSSHCommand(const QVector<QString>& tokens)
     return results;
 }
 
+QHash<QString,QString> parseMOSHCommand(const QVector<QString>& tokens)
+{
+    QHash<QString,QString> results;
+
+    // options which take no arguments
+    QStringList noArgumentOptions;
+    noArgumentOptions << "-a" << "-n";
+
+    int i = 1;
+    while (i < tokens.count() && tokens[i].startsWith('-') ) {
+
+        const QString currToken = tokens[i];
+        const QString nextToken = tokens[i+1];
+
+        // first deal with special case:
+        // -- means the end of all options, so skip it then stop
+        if (currToken == "--") {
+            i += 1;
+            break;
+        }
+
+        QString optionKey;
+        QString optionArgument;
+
+        // for example: -p=9527 or -p 9527 ?
+        const bool optionArgumentCombined = currToken.contains(QLatin1Char('='));
+
+        if (optionArgumentCombined) {
+            const int separatorPosition = currToken.indexOf(QLatin1Char('='));
+            optionKey = currToken.left(separatorPosition);
+            optionArgument = currToken.mid(separatorPosition + 1);
+            i += 1;
+        } else {
+            optionKey = currToken;
+            if (noArgumentOptions.contains(optionKey)) {
+                optionArgument = "set";
+                i += 1;
+            } else {
+                optionArgument = nextToken;
+                i += 2;
+            }
+
+        }
+
+        results[optionKey] = optionArgument;
+    }
+
+    // check to see if only the hostname is specified, or whether
+    // both username and host are specified ( in which case they
+    // are separated by an '@' character:  username@host )
+
+    const QString& userAndHostToken = tokens[i++];
+    const int separatorPosition = userAndHostToken.indexOf('@');
+    if (separatorPosition != -1) {
+        // both username and host specified
+        results["user"] = userAndHostToken.left(separatorPosition);
+        results["host"] = userAndHostToken.mid(separatorPosition + 1);
+    } else {
+        // only the host specified
+        results["host"] = userAndHostToken;
+    }
+
+    // retrieve the port information
+    if ( results.contains("-p") )
+        results["port"] = results["-p"] ;
+    if ( results.contains("--port") )
+        results["port"] = results["--port"] ;
+
+    // collect the remote connection
+    QStringList remoteCommand;
+    // the command line of mosh-client is strange. We stop as soon as encountering
+    // that strange "|" token.
+    while ( i < tokens.count() && tokens[i] != "|" ) {
+        remoteCommand << tokens[i++];
+    }
+    results["command"] = remoteCommand.join(QString(' '));
+
+    return results;
+}
+
+
 SSHProcessInfo::SSHProcessInfo(const ProcessInfo& process)
 {
     bool ok = false;

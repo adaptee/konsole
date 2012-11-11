@@ -1069,72 +1069,72 @@ void SSHProcessInfo::parseSSHCommand(const QVector<QString>& args)
     // options which take one argument
     static const QString singleArgumentOptions("bcDeFIiLlmOopRSWw");
 
-        // find the username, host and command arguments
-        //
-        // the username/host is assumed to be the first argument
-        // which is not an option
-        // ( ie. does not start with a dash '-' character )
-        // or an argument to a previous option.
-        //
-        // the command, if specified, is assumed to be the argument following
-        // the username and host
-        //
-        // note that we skip the argument at index 0 because that is the
-        // program name ( expected to be 'ssh' in this case )
-        for (int i = 1 ; i < args.count() ; i++) {
-            // If this one is an option ...
-            // Most options together with its argument will be skipped.
-            if (args[i].startsWith('-')) {
-                const QChar optionChar = (args[i].length() > 1) ? args[i][1] : '\0';
-                // for example: -p2222 or -p 2222 ?
-                const bool optionArgumentCombined =  args[i].length() > 2;
+    // find the username, host and command arguments
+    //
+    // the username/host is assumed to be the first argument
+    // which is not an option
+    // ( ie. does not start with a dash '-' character )
+    // or an argument to a previous option.
+    //
+    // the command, if specified, is assumed to be the argument following
+    // the username and host
+    //
+    // note that we skip the argument at index 0 because that is the
+    // program name ( expected to be 'ssh' in this case )
+    for (int i = 1 ; i < args.count() ; i++) {
+        // If this one is an option ...
+        // Most options together with its argument will be skipped.
+        if (args[i].startsWith('-')) {
+            const QChar optionChar = (args[i].length() > 1) ? args[i][1] : '\0';
+            // for example: -p2222 or -p 2222 ?
+            const bool optionArgumentCombined =  args[i].length() > 2;
 
-                if (noArgumentOptions.contains(optionChar)) {
-                    continue;
-                } else if (singleArgumentOptions.contains(optionChar)) {
-                    QString argument;
-                    if (optionArgumentCombined) {
-                        argument = args[i].mid(2);
-                    } else {
-                        // Verify correct # arguments are given
-                        if ((i + 1) < args.count()) {
-                            argument = args[i + 1];
-                        }
-                        i++;
-                    }
-
-                    // support using `-l user` to specify username.
-                    if (optionChar == 'l')
-                        _user = argument;
-                    // support using `-p port` to specify port.
-                    else if (optionChar == 'p')
-                        _port = argument;
-
-                    continue;
-                }
-            }
-
-            // check whether the host has been found yet
-            // if not, this must be the username/host argument
-            if (_host.isEmpty()) {
-                // check to see if only a hostname is specified, or whether
-                // both a username and host are specified ( in which case they
-                // are separated by an '@' character:  username@host )
-
-                const int separatorPosition = args[i].indexOf('@');
-                if (separatorPosition != -1) {
-                    // username and host specified
-                    _user = args[i].left(separatorPosition);
-                    _host = args[i].mid(separatorPosition + 1);
+            if (noArgumentOptions.contains(optionChar)) {
+                continue;
+            } else if (singleArgumentOptions.contains(optionChar)) {
+                QString argument;
+                if (optionArgumentCombined) {
+                    argument = args[i].mid(2);
                 } else {
-                    // just the host specified
-                    _host = args[i];
+                    // Verify correct # arguments are given
+                    if ((i + 1) < args.count()) {
+                        argument = args[i + 1];
+                    }
+                    i++;
                 }
-            } else {
-                // host has already been found, this must be the command argument
-                _command = args[i];
+
+                // support using `-l user` to specify username.
+                if (optionChar == 'l')
+                    _user = argument;
+                // support using `-p port` to specify port.
+                else if (optionChar == 'p')
+                    _port = argument;
+
+                continue;
             }
         }
+
+        // check whether the host has been found yet
+        // if not, this must be the username/host argument
+        if (_host.isEmpty()) {
+            // check to see if only a hostname is specified, or whether
+            // both a username and host are specified ( in which case they
+            // are separated by an '@' character:  username@host )
+
+            const int separatorPosition = args[i].indexOf('@');
+            if (separatorPosition != -1) {
+                // username and host specified
+                _user = args[i].left(separatorPosition);
+                _host = args[i].mid(separatorPosition + 1);
+            } else {
+                // just the host specified
+                _host = args[i];
+            }
+        } else {
+            // host has already been found, this must be the command argument
+            _command = args[i];
+        }
+    }
 }
 
 QString SSHProcessInfo::userName() const

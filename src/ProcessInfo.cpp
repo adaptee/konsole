@@ -1038,27 +1038,31 @@ SSHProcessInfo::SSHProcessInfo(const ProcessInfo& process)
     // check that this is a SSH process
     const QString& name = _process.name(&ok);
 
-    if (!ok || name != "ssh") {
-        if (!ok)
-            kWarning() << "Could not read process info";
-        else
-            kWarning() << "Process is not a SSH process";
+    if (!ok) {
+        kWarning() << "Could not read process name";
+        return;
+    }
 
+    if (name != "ssh") {
+        kWarning() << "Process is not a SSH process";
         return;
     }
 
     // read arguments
     const QVector<QString>& args = _process.arguments(&ok);
 
-    // SSH options
-    // these are taken from the SSH manual ( accessed via 'man ssh' )
+    if (!ok) {
+        kWarning() << "Could not read ssh process arguments";
+        return;
+    }
+
+    // openSSH options taken from 'man ssh'
 
     // options which take no arguments
     static const QString noArgumentOptions("1246AaCfgKkMNnqsTtVvXxYy");
     // options which take one argument
     static const QString singleArgumentOptions("bcDeFIiLlmOopRSWw");
 
-    if (ok) {
         // find the username, host and command arguments
         //
         // the username/host is assumed to be the first argument
@@ -1125,11 +1129,6 @@ SSHProcessInfo::SSHProcessInfo(const ProcessInfo& process)
                 _command = args[i];
             }
         }
-    } else {
-        kWarning() << "Could not read arguments";
-
-        return;
-    }
 }
 
 QString SSHProcessInfo::userName() const

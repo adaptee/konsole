@@ -450,6 +450,9 @@ public:
     QString format(const QString& input) const;
 
 private:
+
+    void parseSSHCommand(const QVector<QString>& args);
+
     const ProcessInfo& _process;
     QString _user;
     QString _host;

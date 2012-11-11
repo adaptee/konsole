@@ -1056,6 +1056,12 @@ SSHProcessInfo::SSHProcessInfo(const ProcessInfo& process)
         return;
     }
 
+    parseSSHCommand(args);
+
+}
+
+void SSHProcessInfo::parseSSHCommand(const QVector<QString>& args)
+{
     // openSSH options taken from 'man ssh'
 
     // options which take no arguments

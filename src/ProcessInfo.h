@@ -25,6 +25,7 @@
 #include <QtCore/QMap>
 #include <QtCore/QString>
 #include <QtCore/QVector>
+#include <QtCore/QHash>
 
 namespace Konsole
 {
@@ -451,7 +452,7 @@ public:
 
 private:
 
-    void parseSSHCommand(const QVector<QString>& args);
+    static QHash<QString,QString> parseSSHCommand(const QVector<QString>& args);
 
     const ProcessInfo& _process;
     QString _user;

@@ -1056,11 +1056,15 @@ SSHProcessInfo::SSHProcessInfo(const ProcessInfo& process)
         return;
     }
 
-    parseSSHCommand(args);
+    const QHash<QString,QString>& results = parseSSHCommand(args);
 
+    _user = results["user"];
+    _host = results["host"];
+    _port = results["port"];
+    _command = results["command"];
 }
 
-void SSHProcessInfo::parseSSHCommand(const QVector<QString>& args)
+QHash<QString,QString> SSHProcessInfo::parseSSHCommand(const QVector<QString>& args)
 {
     // openSSH options taken from 'man ssh'
 
@@ -1068,6 +1072,8 @@ void SSHProcessInfo::parseSSHCommand(const QVector<QString>& args)
     static const QString noArgumentOptions("1246AaCfgKkMNnqsTtVvXxYy");
     // options which take one argument
     static const QString singleArgumentOptions("bcDeFIiLlmOopRSWw");
+
+    QHash<QString,QString> results;
 
     // find the username, host and command arguments
     //
@@ -1105,10 +1111,10 @@ void SSHProcessInfo::parseSSHCommand(const QVector<QString>& args)
 
                 // support using `-l user` to specify username.
                 if (optionChar == 'l')
-                    _user = argument;
+                    results["user"] = argument;
                 // support using `-p port` to specify port.
                 else if (optionChar == 'p')
-                    _port = argument;
+                    results["port"] = argument;
 
                 continue;
             }
@@ -1116,7 +1122,7 @@ void SSHProcessInfo::parseSSHCommand(const QVector<QString>& args)
 
         // check whether the host has been found yet
         // if not, this must be the username/host argument
-        if (_host.isEmpty()) {
+        if (results["host"].isEmpty()) {
             // check to see if only a hostname is specified, or whether
             // both a username and host are specified ( in which case they
             // are separated by an '@' character:  username@host )
@@ -1124,17 +1130,19 @@ void SSHProcessInfo::parseSSHCommand(const QVector<QString>& args)
             const int separatorPosition = args[i].indexOf('@');
             if (separatorPosition != -1) {
                 // username and host specified
-                _user = args[i].left(separatorPosition);
-                _host = args[i].mid(separatorPosition + 1);
+                results["user"] = args[i].left(separatorPosition);
+                results["host"] = args[i].mid(separatorPosition + 1);
             } else {
                 // just the host specified
-                _host = args[i];
+                results["host"] = args[i];
             }
         } else {
             // host has already been found, this must be the command argument
-            _command = args[i];
+            results["command"] = args[i];
         }
     }
+
+    return results;
 }
 
 QString SSHProcessInfo::userName() const

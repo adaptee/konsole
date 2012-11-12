@@ -27,6 +27,9 @@
 #include <QtCore/QVector>
 #include <QtCore/QHash>
 
+// KDE
+#include "konsole_export.h"
+
 namespace Konsole
 {
 /**
@@ -402,7 +405,7 @@ private:
 /**
  * Lightweight class which provides additional information about SSH processes.
  */
-class SSHProcessInfo
+class KONSOLEPRIVATE_EXPORT SSHProcessInfo
 {
 public:
     /**
@@ -450,9 +453,9 @@ public:
      */
     QString format(const QString& input) const;
 
-private:
-
     static QHash<QString,QString> parseSSHCommand(const QVector<QString>& args);
+
+private:
 
     const ProcessInfo& _process;
     QString _user;

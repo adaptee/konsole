@@ -21,6 +21,9 @@ target_link_libraries(TerminalCharacterDecoderTest ${KONSOLE_TEST_LIBS})
 kde4_add_unit_test(ProfileTest ProfileTest.cpp)
 target_link_libraries(ProfileTest ${KONSOLE_TEST_LIBS})
 
+kde4_add_unit_test(SSHCommandParserTest SSHCommandParserTest.cpp)
+target_link_libraries(SSHCommandParserTest ${KONSOLE_TEST_LIBS})
+
 kde4_add_unit_test(SessionManagerTest SessionManagerTest.cpp)
 target_link_libraries(SessionManagerTest ${KONSOLE_TEST_LIBS})
 

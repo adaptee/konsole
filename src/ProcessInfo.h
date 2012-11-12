@@ -452,7 +452,7 @@ public:
 
 private:
 
-    static QHash<QString,QString> parseSSHCommand(const QVector<QString>& args);
+    static QHash<QString,QString> parseSSHCommand(const QVector<QString>& tokens);
 
     const ProcessInfo& _process;
     QString _user;

@@ -453,7 +453,7 @@ public:
      */
     QString format(const QString& input) const;
 
-    static QHash<QString,QString> parseSSHCommand(const QVector<QString>& args);
+    static QHash<QString,QString> parseSSHCommand(const QVector<QString>& tokens);
 
 private:
 

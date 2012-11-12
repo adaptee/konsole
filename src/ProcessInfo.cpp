@@ -1064,7 +1064,7 @@ SSHProcessInfo::SSHProcessInfo(const ProcessInfo& process)
     _command = results["command"];
 }
 
-QHash<QString,QString> SSHProcessInfo::parseSSHCommand(const QVector<QString>& args)
+QHash<QString,QString> SSHProcessInfo::parseSSHCommand(const QVector<QString>& tokens)
 {
     // openSSH options taken from 'man ssh'
 
@@ -1075,72 +1075,82 @@ QHash<QString,QString> SSHProcessInfo::parseSSHCommand(const QVector<QString>& a
 
     QHash<QString,QString> results;
 
-    // find the username, host and command arguments
+    // safe guard: the minimal ssh command is "ssh somehost"
+    if (tokens.size() < 2)
+        return results;
+
+    // find the username, host, port and remote command
     //
-    // the username/host is assumed to be the first argument
-    // which is not an option
-    // ( ie. does not start with a dash '-' character )
-    // or an argument to a previous option.
+    // the username & host is assumed to be the first argument which :
     //
-    // the command, if specified, is assumed to be the argument following
+    //   * is not an option (does not start with a dash '-' character )
+    //   * is not an argument belong to the previous option.
+    //
+    // the remote command, if specified, is assumed to be the argument following
     // the username and host
     //
     // note that we skip the argument at index 0 because that is the
     // program name ( expected to be 'ssh' in this case )
-    for (int i = 1 ; i < args.count() ; i++) {
-        // If this one is an option ...
-        // Most options together with its argument will be skipped.
-        if (args[i].startsWith('-')) {
-            const QChar optionChar = (args[i].length() > 1) ? args[i][1] : '\0';
-            // for example: -p2222 or -p 2222 ?
-            const bool optionArgumentCombined =  args[i].length() > 2;
 
-            if (noArgumentOptions.contains(optionChar)) {
-                continue;
-            } else if (singleArgumentOptions.contains(optionChar)) {
-                QString argument;
-                if (optionArgumentCombined) {
-                    argument = args[i].mid(2);
-                } else {
-                    // Verify correct # arguments are given
-                    if ((i + 1) < args.count()) {
-                        argument = args[i + 1];
-                    }
-                    i++;
-                }
+    int i = 1;
+    while (i < tokens.size() && tokens[i].startsWith('-') ) {
 
-                // support using `-l user` to specify username.
-                if (optionChar == 'l')
-                    results["user"] = argument;
-                // support using `-p port` to specify port.
-                else if (optionChar == 'p')
-                    results["port"] = argument;
+        const QChar optionChar = (tokens[i].length() > 1) ? tokens[i][1] : '\0';
+        const QString optionKey = QString("-%1").arg(optionChar);
 
-                continue;
-            }
-        }
-
-        // check whether the host has been found yet
-        // if not, this must be the username/host argument
-        if (results["host"].isEmpty()) {
-            // check to see if only a hostname is specified, or whether
-            // both a username and host are specified ( in which case they
-            // are separated by an '@' character:  username@host )
-
-            const int separatorPosition = args[i].indexOf('@');
-            if (separatorPosition != -1) {
-                // username and host specified
-                results["user"] = args[i].left(separatorPosition);
-                results["host"] = args[i].mid(separatorPosition + 1);
-            } else {
-                // just the host specified
-                results["host"] = args[i];
-            }
+        if (noArgumentOptions.contains(optionChar)) {
+            results[optionKey] = "set";
+            i += 1;
         } else {
-            // host has already been found, this must be the command argument
-            results["command"] = args[i];
+            // This  assert might fail when openssh adds option like "--port"
+            Q_ASSERT(singleArgumentOptions.contains(optionChar));
+
+            // for example: -p2222 or -p 2222 ?
+            const bool optionArgumentCombined =  tokens[i].length() > 2;
+
+            QString optionArgument;
+            if (optionArgumentCombined) {
+                optionArgument = tokens[i].mid(2);
+                i += 1;
+            } else {
+                // Verify correct # arguments are given
+                if ((i + 1) < tokens.size()) {
+                    optionArgument = tokens[i + 1];
+                }
+                i += 2;
+            }
+            results[optionKey] =  optionArgument;
         }
     }
+
+    // check to see if only the hostname is specified, or whether
+    // both username and host are specified ( in which case they
+    // are separated by an '@' character:  username@host )
+
+    Q_ASSERT(i < tokens.size());
+    const QString& userAndHostToken = tokens[i++];
+    const int separatorPosition = userAndHostToken.indexOf('@');
+    if (separatorPosition != -1) {
+        // both username and host are specified
+        results["user"] = userAndHostToken.left(separatorPosition);
+        results["host"] = userAndHostToken.mid(separatorPosition + 1);
+    } else {
+        // only the host is specified
+        results["host"] = userAndHostToken;
+    }
+
+    // there is another way to specify username (lower priority)
+    if ( !results.contains("user") && results.contains("-l") )
+        results["user"] = results["-l"] ;
+
+    if ( results.contains("-p") )
+        results["port"] = results["-p"] ;
+
+    QStringList remoteCommand;
+    while (i < tokens.size()) {
+        remoteCommand << tokens[i++];
+    }
+    results["command"] = remoteCommand.join(QString(' '));
 
     return results;
 }

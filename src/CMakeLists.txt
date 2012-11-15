@@ -172,6 +172,23 @@ ${CMAKE_CURRENT_BINARY_DIR}/tests/CTestCustom.cmake)
 
     install(TARGETS kdeinit_konsole konsole konsoleprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
 
+    # konsole2 : the version not using KUniqueApplication
+    set(konsole2_KDEINIT_SRCS
+        Application2.cpp
+        MainWindow.cpp
+        main2.cpp
+        settings/GeneralSettings.cpp
+        settings/TabBarSettings.cpp
+    )
+    kde4_add_kcfg_files(konsole2_KDEINIT_SRCS settings/KonsoleSettings.kcfgc)
+
+    kde4_add_app_icon(konsole2_KDEINIT_SRCS "${KDE4_ICON_INSTALL_DIR}/oxygen/*/apps/utilities-terminal.png")
+
+    kde4_add_kdeinit_executable( konsole2 ${konsole2_KDEINIT_SRCS})
+    target_link_libraries(kdeinit_konsole2 konsoleprivate)
+
+    install(TARGETS kdeinit_konsole2 konsole2 konsoleprivate ${INSTALL_TARGETS_DEFAULT_ARGS})
+
 ### Embedded Konsole KPart
 
     set(konsolepart_PART_SRCS

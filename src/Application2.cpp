@@ -39,9 +39,10 @@
 
 using namespace Konsole;
 
-Application::Application() : KUniqueApplication()
+Application::Application() : KApplication()
 {
     init();
+    newInstance();
 }
 
 void Application::init()
